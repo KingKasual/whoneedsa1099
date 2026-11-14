@@ -1,0 +1,109 @@
+{
+  "version": "2026.1.0",
+  "taxYear": 2026,
+  "lastReviewed": "2026-11-13",
+  "rules": {
+    "NEC_THRESHOLD": {
+      "title": "1099-NEC $2,000 threshold",
+      "text": "Payments of $2,000 or more in TY2026 to a non-employee for services in the course of your trade or business are reported on Form 1099-NEC, box 1 (raised from $600 for payments made after Dec 31, 2025).",
+      "amount": 2000,
+      "source": "https://www.irs.gov/forms-pubs/about-form-1099-nec"
+    },
+    "MISC_RENT_THRESHOLD": {
+      "title": "1099-MISC rents $2,000 threshold",
+      "text": "Rent payments of $2,000 or more in TY2026 are reported on Form 1099-MISC, box 1. Rent paid to a real estate agent or property manager is not reported by you.",
+      "amount": 2000,
+      "source": "https://www.irs.gov/forms-pubs/about-form-1099-misc"
+    },
+    "MISC_OTHER_THRESHOLD": {
+      "title": "1099-MISC other income $2,000 threshold",
+      "text": "Other income payments of $2,000 or more in TY2026 are reported on Form 1099-MISC, box 3.",
+      "amount": 2000,
+      "source": "https://www.irs.gov/forms-pubs/about-form-1099-misc"
+    },
+    "MISC_ROYALTY_THRESHOLD": {
+      "title": "1099-MISC royalties $10 threshold",
+      "text": "Royalties of $10 or more are reported on Form 1099-MISC, box 2. This threshold did not change.",
+      "amount": 10,
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "MISC_ATTORNEY_PROCEEDS": {
+      "title": "Gross proceeds paid to an attorney",
+      "text": "Gross proceeds paid to an attorney (e.g., a settlement paid through the attorney) are reported on Form 1099-MISC, box 10, even if the attorney is a corporation. The TY2026 threshold for this box is pending confirmation; we flag conservatively at $600.",
+      "amount": 600,
+      "status": "verify",
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "ATTORNEY_FEES": {
+      "title": "Attorney fees: corporation exemption does not apply",
+      "text": "Fees for legal services of $2,000 or more are reported on Form 1099-NEC, box 1, even when the law firm is a corporation.",
+      "amount": 2000,
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "CORP_EXEMPT": {
+      "title": "Payments to corporations are generally exempt",
+      "text": "Payments to a C or S corporation (including an LLC that elected corporate taxation) generally do not need a 1099-NEC/MISC. Exceptions include attorney fees, gross proceeds paid to attorneys, and medical/health care payments.",
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "CARD_APP_EXCLUDED": {
+      "title": "Card and payment-app payments go on Form 1099-K",
+      "text": "Payments you made by credit card, debit card, gift card, or through a third-party settlement organization (e.g., PayPal, Venmo business, Square, Stripe) are reported by the processor on Form 1099-K, so you exclude them from 1099-NEC/MISC. Zelle and ordinary bank transfers are NOT excluded.",
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "GOODS_EXCLUDED": {
+      "title": "Payments for merchandise are not reported",
+      "text": "Payments for merchandise, inventory, freight, storage, telephone and similar items are not reported on Form 1099-NEC/MISC.",
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "OUT_OF_YEAR": {
+      "title": "Only payments made in calendar year 2026 count",
+      "text": "1099 reporting uses the calendar year in which you made the payment. Payments dated outside 2026 were left out.",
+      "source": "https://www.irs.gov/instructions/i1099gi"
+    },
+    "EXCLUDED_BY_USER": {
+      "title": "Not a reportable payee",
+      "text": "You marked this payee as not a reportable payment (e.g., a transfer between your own accounts, payroll, taxes, or personal spending).",
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "NEEDS_CATEGORY": {
+      "title": "Payment type not tagged yet",
+      "text": "Tag what these payments were for. Until then we assume services (the conservative choice).",
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "CORP_UNKNOWN": {
+      "title": "Entity type unknown",
+      "text": "We don't know whether this payee is a corporation, so we assume it is not (conservative). A W-9 tells you the payee's tax classification.",
+      "source": "https://www.irs.gov/forms-pubs/about-form-w-9"
+    },
+    "BACKUP_WITHHOLDING": {
+      "title": "Backup withholding (24%)",
+      "text": "If a payee is reportable and has not given you a correct TIN (e.g., via Form W-9), you must withhold 24% from future payments and report it on Form 945.",
+      "rate": 0.24,
+      "appliesBelowThreshold": false,
+      "source": "https://www.irs.gov/businesses/small-businesses-self-employed/backup-withholding"
+    },
+    "COLLECT_W9": {
+      "title": "Collect a W-9 now",
+      "text": "This payee is under the threshold so far, but has no TIN on file. Collect a W-9 before paying more: once total payments reach the threshold you will need the TIN, and backup withholding applies to a reportable payee with no TIN.",
+      "source": "https://www.irs.gov/forms-pubs/about-form-w-9"
+    },
+    "NEAR_THRESHOLD": {
+      "title": "Close to the threshold",
+      "text": "Total payments are within 10% of the threshold. Make sure every account and export is included before deciding not to file.",
+      "source": "https://www.irs.gov/instructions/i1099mec"
+    },
+    "STATE_LOWER_THRESHOLD": {
+      "title": "State filing may be required",
+      "text": "Your state's 1099 rules may differ from the federal $2,000 threshold. See the state row for details.",
+      "source": "https://www.irs.gov/tax-professionals/combined-federal-state-filing-program"
+    }
+  },
+  "deadlines": [
+    { "id": "nec", "date": "2027-02-01", "label": "1099-NEC due to recipients AND the IRS", "note": "Jan 31, 2027 is a Sunday, so the deadline moves to Monday, Feb 1." },
+    { "id": "misc-recipient", "date": "2027-02-01", "label": "1099-MISC copies due to recipients", "note": "Feb 16, 2027 if you report amounts in box 8 or 10." },
+    { "id": "misc-box10-recipient", "date": "2027-02-16", "label": "1099-MISC recipient copies with box 8 or 10 amounts", "note": "Feb 15, 2027 is Presidents' Day (a federal holiday)." },
+    { "id": "misc-paper", "date": "2027-03-01", "label": "1099-MISC due to the IRS (paper)", "note": "" },
+    { "id": "misc-efile", "date": "2027-03-31", "label": "1099-MISC due to the IRS (e-file, e.g., IRIS)", "note": "" }
+  ],
+  "deadlineSource": "https://www.irs.gov/instructions/i1099gi"
+}

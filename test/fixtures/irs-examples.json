@@ -1,0 +1,332 @@
+{
+  "_note": "Scenarios paraphrased from the IRS General Instructions for Certain Information Returns and the Instructions for Forms 1099-MISC and 1099-NEC (examples of reportable / not reportable payments), with TY2026 amounts. Source: https://www.irs.gov/instructions/i1099mec",
+  "cases": [
+    {
+      "name": "Sole-proprietor contractor paid $2,500 by check for services -> 1099-NEC box 1",
+      "payee": {
+        "category": "services",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-03-01",
+            "amount": 1500,
+            "method": "check"
+          },
+          {
+            "date": "2026-09-01",
+            "amount": 1000,
+            "method": "ach"
+          }
+        ]
+      },
+      "expect": {
+        "status": "file",
+        "forms": [
+          {
+            "form": "1099-NEC",
+            "box": "1",
+            "amount": 2500
+          }
+        ]
+      }
+    },
+    {
+      "name": "Contractor paid $1,800 for services -> no form (under $2,000), flagged for review as near threshold",
+      "payee": {
+        "category": "services",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-05-01",
+            "amount": 1800,
+            "method": "zelle"
+          }
+        ]
+      },
+      "expect": {
+        "status": "review",
+        "forms": [],
+        "reasonIds": [
+          "NEC_THRESHOLD"
+        ]
+      }
+    },
+    {
+      "name": "Exactly $2,000 meets the threshold ($2,000 or more)",
+      "payee": {
+        "category": "services",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-05-01",
+            "amount": 2000,
+            "method": "bank"
+          }
+        ]
+      },
+      "expect": {
+        "status": "file",
+        "forms": [
+          {
+            "form": "1099-NEC",
+            "box": "1",
+            "amount": 2000
+          }
+        ]
+      }
+    },
+    {
+      "name": "Services paid to a corporation -> generally not reported",
+      "payee": {
+        "category": "services",
+        "isCorporation": "yes",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-02-01",
+            "amount": 9000,
+            "method": "check"
+          }
+        ]
+      },
+      "expect": {
+        "status": "no_file",
+        "forms": [],
+        "reasonIds": [
+          "CORP_EXEMPT"
+        ]
+      }
+    },
+    {
+      "name": "Fees paid to an incorporated law firm for legal services -> 1099-NEC box 1",
+      "payee": {
+        "category": "attorney_fees",
+        "isCorporation": "yes",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-06-01",
+            "amount": 3200,
+            "method": "check"
+          }
+        ]
+      },
+      "expect": {
+        "status": "file",
+        "forms": [
+          {
+            "form": "1099-NEC",
+            "box": "1",
+            "amount": 3200
+          }
+        ],
+        "reasonIds": [
+          "ATTORNEY_FEES"
+        ]
+      }
+    },
+    {
+      "name": "Settlement paid to claimant's attorney (gross proceeds) -> 1099-MISC box 10 even for a corporation",
+      "payee": {
+        "category": "attorney_proceeds",
+        "isCorporation": "yes",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-07-01",
+            "amount": 25000,
+            "method": "check"
+          }
+        ]
+      },
+      "expect": {
+        "status": "file",
+        "forms": [
+          {
+            "form": "1099-MISC",
+            "box": "10",
+            "amount": 25000
+          }
+        ]
+      }
+    },
+    {
+      "name": "Office rent paid to an individual landlord -> 1099-MISC box 1",
+      "payee": {
+        "category": "rent",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-01-01",
+            "amount": 1200,
+            "method": "check"
+          },
+          {
+            "date": "2026-02-01",
+            "amount": 1200,
+            "method": "check"
+          }
+        ]
+      },
+      "expect": {
+        "status": "file",
+        "forms": [
+          {
+            "form": "1099-MISC",
+            "box": "1",
+            "amount": 2400
+          }
+        ]
+      }
+    },
+    {
+      "name": "Royalties of $10 or more -> 1099-MISC box 2",
+      "payee": {
+        "category": "royalties",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-12-15",
+            "amount": 45,
+            "method": "ach"
+          }
+        ]
+      },
+      "expect": {
+        "status": "file",
+        "forms": [
+          {
+            "form": "1099-MISC",
+            "box": "2",
+            "amount": 45
+          }
+        ]
+      }
+    },
+    {
+      "name": "Contractor paid entirely by credit card -> reported by processor on 1099-K, not by you",
+      "payee": {
+        "category": "services",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-04-01",
+            "amount": 6000,
+            "method": "card"
+          }
+        ]
+      },
+      "expect": {
+        "status": "no_file",
+        "forms": [],
+        "reasonIds": [
+          "CARD_APP_EXCLUDED"
+        ]
+      }
+    },
+    {
+      "name": "Mixed: $3,000 via PayPal + $1,500 by check -> only the check counts, under threshold",
+      "payee": {
+        "category": "services",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-04-01",
+            "amount": 3000,
+            "method": "app"
+          },
+          {
+            "date": "2026-04-02",
+            "amount": 1500,
+            "method": "check"
+          }
+        ]
+      },
+      "expect": {
+        "status": "no_file",
+        "forms": []
+      }
+    },
+    {
+      "name": "Zelle is a bank transfer, not a TPSO -> counts toward 1099-NEC",
+      "payee": {
+        "category": "services",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-04-01",
+            "amount": 2100,
+            "method": "zelle"
+          }
+        ]
+      },
+      "expect": {
+        "status": "file",
+        "forms": [
+          {
+            "form": "1099-NEC",
+            "box": "1",
+            "amount": 2100
+          }
+        ]
+      }
+    },
+    {
+      "name": "Merchandise purchases -> not reportable",
+      "payee": {
+        "category": "goods",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2026-04-01",
+            "amount": 12000,
+            "method": "check"
+          }
+        ]
+      },
+      "expect": {
+        "status": "no_file",
+        "forms": [],
+        "reasonIds": [
+          "GOODS_EXCLUDED"
+        ]
+      }
+    },
+    {
+      "name": "Payment made Dec 2025 (old $600 rules, prior year) is ignored for TY2026",
+      "payee": {
+        "category": "services",
+        "isCorporation": "no",
+        "hasTin": "yes",
+        "payments": [
+          {
+            "date": "2025-12-30",
+            "amount": 5000,
+            "method": "check"
+          },
+          {
+            "date": "2026-01-05",
+            "amount": 500,
+            "method": "check"
+          }
+        ]
+      },
+      "expect": {
+        "status": "no_file",
+        "forms": [],
+        "reasonIds": [
+          "OUT_OF_YEAR"
+        ]
+      }
+    }
+  ]
+}

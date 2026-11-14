@@ -1,0 +1,164 @@
+{
+  "$comment": "PLACEHOLDER headers reconstructed from memory of prior-year IRIS Taxpayer Portal templates. NOT the official TY2026 template. Replace by running: npm run iris:import -- <downloaded-template.csv> 1099-NEC. Paid export stays disabled in production while status != official.",
+  "form": "1099-NEC",
+  "taxYear": 2026,
+  "status": "placeholder",
+  "importedFrom": null,
+  "importedAt": null,
+  "maxRecordsPerFile": 250,
+  "rules": {
+    "nameChars": "^[A-Za-z0-9 &\\-]*$",
+    "addressChars": "^[A-Za-z0-9 \\-/]*$",
+    "dateFormat": "MM/DD/YYYY",
+    "moneyPattern": "^\\d+\\.\\d{2}$",
+    "maxLengths": {
+      "name": 40,
+      "address": 40,
+      "city": 40,
+      "accountNumber": 20,
+      "phone": 15
+    }
+  },
+  "columns": [
+    {
+      "header": "Form Type",
+      "field": "const:1099-NEC"
+    },
+    {
+      "header": "Tax Year",
+      "field": "form.taxYear"
+    },
+    {
+      "header": "Payer TIN Type",
+      "field": "payer.tinType"
+    },
+    {
+      "header": "Payer Taxpayer ID Number",
+      "field": "payer.tin"
+    },
+    {
+      "header": "Payer Name Type",
+      "field": "payer.nameType"
+    },
+    {
+      "header": "Payer Business or Entity Name Line 1",
+      "field": "payer.businessName"
+    },
+    {
+      "header": "Payer First Name",
+      "field": "payer.firstName"
+    },
+    {
+      "header": "Payer Last Name (Surname)",
+      "field": "payer.lastName"
+    },
+    {
+      "header": "Payer Country",
+      "field": "payer.country"
+    },
+    {
+      "header": "Payer Address Line 1",
+      "field": "payer.address1"
+    },
+    {
+      "header": "Payer Address Line 2",
+      "field": "payer.address2"
+    },
+    {
+      "header": "Payer City/Town",
+      "field": "payer.city"
+    },
+    {
+      "header": "Payer State/Province/Territory",
+      "field": "payer.state"
+    },
+    {
+      "header": "Payer ZIP/Postal Code",
+      "field": "payer.zip"
+    },
+    {
+      "header": "Payer Phone Type",
+      "field": "const:"
+    },
+    {
+      "header": "Payer Phone",
+      "field": "payer.phone"
+    },
+    {
+      "header": "Recipient TIN Type",
+      "field": "recipient.tinType"
+    },
+    {
+      "header": "Recipient Taxpayer ID Number",
+      "field": "recipient.tin"
+    },
+    {
+      "header": "Recipient Name Type",
+      "field": "recipient.nameType"
+    },
+    {
+      "header": "Recipient Business or Entity Name Line 1",
+      "field": "recipient.businessName"
+    },
+    {
+      "header": "Recipient First Name",
+      "field": "recipient.firstName"
+    },
+    {
+      "header": "Recipient Middle Name",
+      "field": "recipient.middleName"
+    },
+    {
+      "header": "Recipient Last Name (Surname)",
+      "field": "recipient.lastName"
+    },
+    {
+      "header": "Recipient Suffix",
+      "field": "recipient.suffix"
+    },
+    {
+      "header": "Recipient Country",
+      "field": "recipient.country"
+    },
+    {
+      "header": "Recipient Address Line 1",
+      "field": "recipient.address1"
+    },
+    {
+      "header": "Recipient Address Line 2",
+      "field": "recipient.address2"
+    },
+    {
+      "header": "Recipient City/Town",
+      "field": "recipient.city"
+    },
+    {
+      "header": "Recipient State/Province/Territory",
+      "field": "recipient.state"
+    },
+    {
+      "header": "Recipient ZIP/Postal Code",
+      "field": "recipient.zip"
+    },
+    {
+      "header": "Form Account Number",
+      "field": "recipient.accountNumber"
+    },
+    {
+      "header": "Second TIN Notice",
+      "field": "const:"
+    },
+    {
+      "header": "Box 1 - Nonemployee Compensation",
+      "field": "box.nec1"
+    },
+    {
+      "header": "Box 2 - Direct Sales Indicator",
+      "field": "const:"
+    },
+    {
+      "header": "Box 4 - Federal Income Tax Withheld",
+      "field": "box.withheld"
+    }
+  ]
+}

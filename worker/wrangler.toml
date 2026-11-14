@@ -1,0 +1,24 @@
+name = "whogetsa1099-license"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+workers_dev = false
+
+# Same-origin API: the Worker answers YOURDOMAIN.com/api/* in front of Cloudflare Pages.
+# SITE_DOMAIN is substituted by CI (scripts/ci-wrangler.sh); do not hard-code the domain here.
+routes = [{ pattern = "__SITE_DOMAIN__/api/*", zone_name = "__SITE_DOMAIN__" }]
+
+[vars]
+PAYMENTS_ENABLED = "false"
+POLAR_API_BASE = "https://sandbox-api.polar.sh"
+POLAR_ORG_ID = ""
+POLAR_BENEFIT_SINGLE = ""
+POLAR_BENEFIT_PACK = ""
+ALLOWED_ORIGINS = "http://localhost:5173,http://localhost:4173"
+
+[env.production.vars]
+PAYMENTS_ENABLED = "false"
+POLAR_API_BASE = "https://api.polar.sh"
+POLAR_ORG_ID = ""
+POLAR_BENEFIT_SINGLE = ""
+POLAR_BENEFIT_PACK = ""
+ALLOWED_ORIGINS = ""

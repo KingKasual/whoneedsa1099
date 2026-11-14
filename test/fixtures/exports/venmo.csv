@@ -1,0 +1,3 @@
+,ID,Datetime,Type,Status,Note,From,To,Amount (total),Amount (tip),Amount (fee),Funding Source,Destination
+,4001,2026-04-02T15:00:00,Payment,Complete,window cleaning,My Biz,Sam Windows,- $400.00,,,Venmo balance,
+,4002,2026-04-09T15:00:00,Payment,Complete,refund,Sam Windows,My Biz,+ $20.00,,,,Venmo balance

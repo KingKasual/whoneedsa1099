@@ -1,0 +1,48 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency: deploy-production
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      # Non-secret config lives in repository *variables*; tokens live in *secrets*.
+      VITE_SITE_URL: https://${{ vars.SITE_DOMAIN }}
+      VITE_PAYMENTS_ENABLED: ${{ vars.PAYMENTS_ENABLED }}
+      VITE_CHECKOUT_SINGLE_URL: ${{ vars.CHECKOUT_SINGLE_URL }}
+      VITE_CHECKOUT_PACK_URL: ${{ vars.CHECKOUT_PACK_URL }}
+      VITE_CF_BEACON_TOKEN: ${{ vars.CF_BEACON_TOKEN }}
+      VITE_SELLER_NAME: ${{ vars.SELLER_NAME }}
+      VITE_CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # npm's "xlsx" stops at 0.18.5 (known advisories); SheetJS publishes fixes on its own CDN.
+      - run: npm i --no-save https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
+      - run: npm run typecheck && npm test
+      - run: npm run build
+      - run: npm run check:release
+      - name: Deploy site (Cloudflare Pages)
+        run: npx wrangler pages deploy dist --project-name="${{ vars.CF_PAGES_PROJECT }}" --branch=main
+      - name: Deploy license Worker
+        working-directory: worker
+        run: |
+          sed -i "s/__SITE_DOMAIN__/${{ vars.SITE_DOMAIN }}/g" wrangler.toml
+          npx wrangler deploy --env production \
+            --var PAYMENTS_ENABLED:"${{ vars.PAYMENTS_ENABLED }}" \
+            --var POLAR_API_BASE:"${{ vars.POLAR_API_BASE }}" \
+            --var POLAR_ORG_ID:"${{ vars.POLAR_ORG_ID }}" \
+            --var POLAR_BENEFIT_SINGLE:"${{ vars.POLAR_BENEFIT_SINGLE }}" \
+            --var POLAR_BENEFIT_PACK:"${{ vars.POLAR_BENEFIT_PACK }}" \
+            --var ALLOWED_ORIGINS:""
