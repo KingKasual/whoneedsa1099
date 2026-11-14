@@ -1,11 +1,10 @@
-name = "whogetsa1099-license"
+name = "whoneedsa1099-license"
 main = "src/index.ts"
 compatibility_date = "2026-10-01"
 workers_dev = false
 
-# Same-origin API: the Worker answers YOURDOMAIN.com/api/* in front of Cloudflare Pages.
-# SITE_DOMAIN is substituted by CI (scripts/ci-wrangler.sh); do not hard-code the domain here.
-routes = [{ pattern = "__SITE_DOMAIN__/api/*", zone_name = "__SITE_DOMAIN__" }]
+# Same-origin API: the Worker answers www.whoneedsa1099.com/api/* in front of Cloudflare Pages.
+routes = [{ pattern = "www.whoneedsa1099.com/api/*", zone_name = "whoneedsa1099.com" }]
 
 [vars]
 PAYMENTS_ENABLED = "false"

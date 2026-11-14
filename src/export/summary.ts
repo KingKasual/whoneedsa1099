@@ -22,7 +22,7 @@ export interface SummaryModel {
 }
 
 export const DISCLAIMER =
-  'Prepared with WhoGetsA1099 from the user\'s own exports and answers. This is not tax or legal advice. Verify each result with a tax professional and current IRS instructions.';
+  'Prepared with WhoNeedsA1099 from the user\'s own exports and answers. This is not tax or legal advice. Verify each result with a tax professional and current IRS instructions.';
 
 export function buildSummary(input: {
   business: string;

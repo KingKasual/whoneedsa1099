@@ -9,7 +9,7 @@ import type { StateRow } from '../src/rules';
 import { QUESTIONS, type Question } from '../src/content/questions';
 import { LEGAL } from '../src/content/legal';
 
-const SITE = (process.env.VITE_SITE_URL ?? 'https://YOURDOMAIN.com').replace(/\/$/, '');
+const SITE = (process.env.VITE_SITE_URL ?? 'https://www.whoneedsa1099.com').replace(/\/$/, '');
 const BEACON = process.env.VITE_CF_BEACON_TOKEN ?? '';
 const OUT = process.argv[2] ?? 'dist';
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -29,7 +29,7 @@ function page(path: string, o: { title: string; description: string; body: strin
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(o.title)} | WhoGetsA1099</title>
+<title>${esc(o.title)} | WhoNeedsA1099</title>
 <meta name="description" content="${esc(o.description)}">
 <link rel="canonical" href="${canonical}">
 <meta property="og:title" content="${esc(o.title)}">
@@ -43,7 +43,7 @@ ${(o.jsonLd ?? []).map((j) => `<script type="application/ld+json">${ld(j)}</scri
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/">WhoGetsA1099</a><nav aria-label="Main"><a href="/questions/">Questions</a><a href="/states/">State rules</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/">WhoNeedsA1099</a><nav aria-label="Main"><a href="/questions/">Questions</a><a href="/states/">State rules</a></nav></div></header>
 <main id="main" class="wrap article">
 ${o.body}
 </main>
@@ -185,7 +185,7 @@ for (const l of LEGAL) {
 // ---------- Home: inject analytics + JSON-LD into Vite's index.html ----------
 const indexPath = join(OUT, 'index.html');
 let index = readFileSync(indexPath, 'utf8');
-const appLd = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'WhoGetsA1099', url: `${SITE}/`, applicationCategory: 'FinanceApplication', operatingSystem: 'Any', offers: [{ '@type': 'Offer', price: '0', priceCurrency: 'USD' }, { '@type': 'Offer', price: '19', priceCurrency: 'USD' }] };
+const appLd = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'WhoNeedsA1099', url: `${SITE}/`, applicationCategory: 'FinanceApplication', operatingSystem: 'Any', offers: [{ '@type': 'Offer', price: '0', priceCurrency: 'USD' }, { '@type': 'Offer', price: '19', priceCurrency: 'USD' }] };
 index = index.replace('</head>', `<script type="application/ld+json">${ld(appLd)}</script>\n</head>`);
 if (BEACON) index = index.replace('</body>', `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='${ld({ token: BEACON })}'></script>\n</body>`);
 writeFileSync(indexPath, index);

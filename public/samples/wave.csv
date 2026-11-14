@@ -1,0 +1,4 @@
+Transaction ID,Transaction Date,Account Name,Transaction Description,Transaction Line Description,Amount (One column),Debit Amount (Two Column Approach),Credit Amount (Two Column Approach),Other Accounts for this Transaction,Customer,Vendor,Invoice Number,Bill Number,Notes / Memo,Amount Before Sales Tax,Sales Tax Amount,Sales Tax Name,Transaction Date Added,Transaction Date Last Modified,Account Group,Account Type,Account ID
+1001,2026-06-01,Subcontracted Services,Payment to Tom Rivera,,2200.00,2200.00,,Business Checking,,Tom Rivera,,,,,,,2026-06-01,2026-06-01,Expense,Operating Expense,
+1001,2026-06-01,Business Checking,Payment to Tom Rivera,,-2200.00,,2200.00,Subcontracted Services,,Tom Rivera,,,,,,,2026-06-01,2026-06-01,Asset,Cash and Bank,
+1002,2026-07-01,Rent Expense,July rent,,1500.00,1500.00,,Business Visa Card,,Oak Street Properties,,,,,,,2026-07-01,2026-07-01,Expense,Operating Expense,

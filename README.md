@@ -1,4 +1,4 @@
-# WhoGetsA1099
+# WhoNeedsA1099
 
 Privacy-first 1099-NEC/MISC checker for tax year 2026. All file parsing and rule evaluation runs in the browser; the only server code is a license-key Worker that sees a key and a random label.
 

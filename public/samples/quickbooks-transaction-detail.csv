@@ -1,0 +1,13 @@
+Transaction Detail by Account,,,,,,,
+"Your Company, LLC",,,,,,,
+"January - December, 2026",,,,,,,
+,,,,,,,
+Date,Transaction Type,Num,Name,Memo/Description,Account,Split,Amount
+Contract labor,,,,,,,
+01/31/2026,Check,1050,Ridgeline Electric Inc.,January work,Contract labor,Checking,"2,600.00"
+02/28/2026,Expense,,Bright Bookkeeping,Feb bookkeeping,Contract labor,Checking,750.00
+03/31/2026,Expense,,Bright Bookkeeping LLC,Mar bookkeeping,Contract labor,Checking,750.00
+04/30/2026,Bill Payment (Credit Card),,Bright Bookkeeping,Apr bookkeeping,Contract labor,Visa,750.00
+05/01/2026,Bill,,Bright Bookkeeping,May bill (accrual),Contract labor,Accounts Payable,750.00
+05/15/2026,Deposit,,Customer A,Customer payment,Checking,Sales,"5,000.00"
+Total for Contract labor,,,,,,,"$4,850.00"

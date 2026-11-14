@@ -3,7 +3,7 @@ import preact from '@preact/preset-vite';
 import federal from './src/rules/federal-ty2026.json';
 
 process.env.VITE_RULES_VERSION ??= federal.version;
-process.env.VITE_SITE_URL ??= 'https://YOURDOMAIN.com';
+process.env.VITE_SITE_URL ??= 'https://www.whoneedsa1099.com';
 
 export default defineConfig({
   plugins: [preact()],

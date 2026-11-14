@@ -59,3 +59,5 @@ fieldset{border:1px solid var(--line);border-radius:var(--radius);margin:12px 0}
 .status-verify{color:var(--warn);font-weight:700}
 .cta-box{background:var(--soft);border-radius:var(--radius);padding:16px 20px;margin:24px 0}
 @media (max-width:640px){nav a{margin-left:10px}th,td{padding:6px}}
+.test-banner{margin:0;padding:8px 16px;background:#ffd56b;color:#3d2800;text-align:center;font-weight:700}
+.csv-preview{overflow-x:auto;max-height:240px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:8px;font-size:.8rem}

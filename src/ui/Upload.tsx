@@ -43,6 +43,25 @@ export function Upload({ files, onAdd, onChange, onRemove, busy }: Props) {
         <span class="drop-title">{busy ? 'Reading…' : 'Drop files here or choose files'}</span>
         <span class="muted">Payments for calendar year 2026 are used; everything else is ignored.</span>
       </label>
+      {files.length === 0 && (
+        <p>
+          <button
+            type="button"
+            class="secondary"
+            disabled={busy}
+            onClick={async () => {
+              const names = ['chase-checking.csv', 'chase-card.csv', 'paypal.csv', 'quickbooks-transaction-detail.csv', 'wave.csv'];
+              const list = await Promise.all(
+                names.map(async (n) => new File([await (await fetch(`./samples/${n}`)).text()], `sample-${n}`, { type: 'text/csv' })),
+              );
+              onAdd(list);
+            }}
+          >
+            Try it with sample exports
+          </button>{' '}
+          <span class="muted small">Made-up data: a checking account, a card, PayPal, QuickBooks and Wave.</span>
+        </p>
+      )}
       {files.length > 0 && (
         <ul class="files">
           {files.map((f, i) => (

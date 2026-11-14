@@ -126,7 +126,7 @@ export function Paid({ rows, businessId, payer, onPayer, meta, onMeta }: Props) 
         )}
         {DEV_UNLOCK && (
           <button type="button" class="link" onClick={() => setDevUnlocked(true)}>
-            Dev only: unlock locally
+            Test mode: unlock paid features (no payment)
           </button>
         )}
       </section>
@@ -137,7 +137,7 @@ export function Paid({ rows, businessId, payer, onPayer, meta, onMeta }: Props) 
     .filter((r) => r.verdict.forms.length > 0)
     .map((r) => ({ payeeId: r.group.id, displayName: r.group.displayName, verdict: r.verdict, recipient: metaFor(r.group.key, r).recipient }));
 
-  const runIris = () => setResults(TEMPLATES.map((t) => generateIris(t, payer, records, 'whogetsa1099')));
+  const runIris = () => setResults(TEMPLATES.map((t) => generateIris(t, payer, records, 'whoneedsa1099')));
   const placeholder = TEMPLATES.some((t) => t.status !== 'official');
   const businessName = payer.nameType === 'B' ? payer.businessName : `${payer.firstName} ${payer.lastName}`.trim();
 
@@ -232,6 +232,12 @@ export function Paid({ rows, businessId, payer, onPayer, meta, onMeta }: Props) 
             <button type="button" key={f.name} onClick={() => downloadText(f.name, f.csv)}>
               Download {f.name} ({f.records} records)
             </button>
+          ))}
+          {res.files.map((f) => (
+            <details key={`${f.name}-preview`}>
+              <summary>Preview {f.name}</summary>
+              <pre class="csv-preview" tabIndex={0}>{f.csv}</pre>
+            </details>
           ))}
           {res.files.length === 0 && res.payerIssues.length === 0 && <p class="muted">No payees need this form.</p>}
           {res.heldBack.length > 0 && (

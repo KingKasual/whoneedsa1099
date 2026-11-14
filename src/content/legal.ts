@@ -18,10 +18,10 @@ export const LEGAL: LegalPage[] = [
   {
     slug: 'disclaimer',
     title: 'Disclaimer: not tax advice',
-    description: 'WhoGetsA1099 is an informational tool, not tax, legal or accounting advice.',
+    description: 'WhoNeedsA1099 is an informational tool, not tax, legal or accounting advice.',
     updated: UPDATED,
     html: `
-<p><strong>WhoGetsA1099 is not tax, legal or accounting advice, and using it does not create a professional relationship.</strong></p>
+<p><strong>WhoNeedsA1099 is not tax, legal or accounting advice, and using it does not create a professional relationship.</strong></p>
 <p>The checker applies a simplified reading of federal rules for tax year 2026 to the data and answers you provide. It can be wrong: your exports may be incomplete, a payee may be tagged incorrectly, rules may have exceptions we don't model (for example medical payments, fishing boat proceeds, direct sales, payments to foreign persons, or employees misclassified as contractors), and IRS or state guidance can change.</p>
 <p>State information marked "verify" has not been confirmed against official 2026 guidance. Every verdict shows the rule and source it relied on so you can check it.</p>
 <p>You are responsible for your own information returns. Confirm results with the current IRS instructions or a qualified tax professional before filing.</p>`,
@@ -54,11 +54,11 @@ export const LEGAL: LegalPage[] = [
   {
     slug: 'terms',
     title: 'Terms of use',
-    description: 'Terms for using WhoGetsA1099 and buying a license.',
+    description: 'Terms for using WhoNeedsA1099 and buying a license.',
     updated: UPDATED,
     html: `
 <h2>The service</h2>
-<p>WhoGetsA1099 ("the service") is provided by ${SELLER}. The free checker and paid exports are informational tools. See the <a href="/disclaimer/">disclaimer</a>: the service is not tax, legal or accounting advice.</p>
+<p>WhoNeedsA1099 ("the service") is provided by ${SELLER}. The free checker and paid exports are informational tools. See the <a href="/disclaimer/">disclaimer</a>: the service is not tax, legal or accounting advice.</p>
 <h2>Licenses</h2>
 <ul>
 <li>A single-business license ($19) covers one business for tax year 2026. A bookkeeper pack ($59) covers up to 15 businesses for tax year 2026.</li>

@@ -3,7 +3,8 @@ import { readFileSync } from 'node:fs';
 
 const errors: string[] = [];
 const site = process.env.VITE_SITE_URL ?? '';
-if (!site || site.includes('YOURDOMAIN')) errors.push('VITE_SITE_URL is not set to the real domain.');
+if (!site.startsWith('https://')) errors.push('VITE_SITE_URL must be the real https domain.');
+if (process.env.VITE_TEST_UNLOCK === 'true') errors.push('VITE_TEST_UNLOCK must not be set on a production build.');
 if (process.env.VITE_PAYMENTS_ENABLED === 'true') {
   for (const f of ['1099-NEC', '1099-MISC']) {
     const t = JSON.parse(readFileSync(`src/export/iris-templates/${f}.ty2026.json`, 'utf8')) as { status: string };
