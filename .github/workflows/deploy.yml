@@ -42,6 +42,10 @@ jobs:
         if: env.IS_PROD != 'true'
         run: |
           printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+      - name: Create Pages project if missing
+        run: |
+          npx wrangler pages project list | grep -qw "$PAGES_PROJECT" \
+            || npx wrangler pages project create "$PAGES_PROJECT" --production-branch=main
       - name: Deploy site (Cloudflare Pages)
         run: npx wrangler pages deploy dist --project-name="$PAGES_PROJECT" --branch="${{ github.ref_name }}"
       - name: Deploy license Worker (production only)
