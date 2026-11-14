@@ -1,0 +1,34 @@
+WhoNeedsA1099 Source-Available License
+
+Copyright (c) 2026 KingKasual. All rights reserved.
+
+This repository is published so that anyone can inspect, audit and verify how
+WhoNeedsA1099 (https://www.whoneedsa1099.com) handles data, including the claim
+that files, payment data and taxpayer identification numbers are processed only
+in the user's browser.
+
+You MAY:
+  1. View and read the source code.
+  2. Download, build and run the code on your own device solely to audit,
+     test or verify its behavior, privacy or security.
+  3. Report issues and submit suggested changes (pull requests). By submitting
+     a contribution you grant the copyright holder a perpetual, worldwide,
+     royalty-free license to use, modify and distribute it.
+
+You MAY NOT, without prior written permission from the copyright holder:
+  1. Host, deploy, publish or make the software (or any modified version or
+     substantial portion of it) available to others, whether free or paid.
+  2. Copy, modify, merge, sublicense, sell or distribute the software or any
+     substantial portion of it, including the rules data and page content.
+  3. Remove, disable or circumvent license-key checks or other access controls.
+  4. Use the WhoNeedsA1099 name or branding.
+
+Third-party components keep their own licenses (see package.json and the
+node_modules they install).
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF
+OR IN CONNECTION WITH THE SOFTWARE OR ITS USE. NOTHING IN THIS SOFTWARE IS TAX
+OR LEGAL ADVICE.

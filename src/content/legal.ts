@@ -69,6 +69,8 @@ export const LEGAL: LegalPage[] = [
 <p>The service is provided "as is" without warranties of any kind. To the fullest extent permitted by law, our total liability for any claim relating to the service is limited to the amount you paid for it. We are not liable for penalties, interest or other losses arising from information returns you file or fail to file.</p>
 <h2>Changes</h2>
 <p>We may update these terms; the date above shows the latest version.</p>
+<h2>Source code</h2>
+<p>The source code is published at <a href="https://github.com/KingKasual/whoneedsa1099">github.com/KingKasual/whoneedsa1099</a> so anyone can verify how the app handles data. It is source-available, not open source: you may read, run and audit it, but not host, copy or redistribute it. See the LICENSE file in the repository.</p>
 <h2>Contact</h2>
 <p>${CONTACT}</p>`,
   },

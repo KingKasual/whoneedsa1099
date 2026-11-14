@@ -13,7 +13,7 @@
     "iris:import": "tsx scripts/iris-import.ts",
     "check:release": "tsx scripts/check-release.ts"
   },
-  "license": "UNLICENSED",
+  "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "jspdf": "^4.2.1",
     "papaparse": "^5.7.1",

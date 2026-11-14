@@ -47,7 +47,7 @@ ${(o.jsonLd ?? []).map((j) => `<script type="application/ld+json">${ld(j)}</scri
 <main id="main" class="wrap article">
 ${o.body}
 </main>
-<footer class="site"><div class="wrap"><p>Not tax or legal advice. <a href="/disclaimer/">Disclaimer</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · Rules data v${esc(FEDERAL.version)}, states v${esc(STATES.version)}</p></div></footer>
+<footer class="site"><div class="wrap"><p>Not tax or legal advice. <a href="/disclaimer/">Disclaimer</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="https://github.com/KingKasual/whoneedsa1099">Source code</a> · Rules data v${esc(FEDERAL.version)}, states v${esc(STATES.version)}</p></div></footer>
 ${BEACON ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='${ld({ token: BEACON })}'></script>` : ''}
 </body>
 </html>
