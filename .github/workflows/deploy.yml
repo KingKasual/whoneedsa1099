@@ -40,7 +40,8 @@ jobs:
         run: npm run check:release
       - name: Keep preview builds out of search engines
         if: env.IS_PROD != 'true'
-        run: printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+        run: |
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
       - name: Deploy site (Cloudflare Pages)
         run: npx wrangler pages deploy dist --project-name="$PAGES_PROJECT" --branch="${{ github.ref_name }}"
       - name: Deploy license Worker (production only)
